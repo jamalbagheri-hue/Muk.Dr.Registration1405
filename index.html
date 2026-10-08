@@ -13,7 +13,7 @@ html{scroll-padding-top:env(safe-area-inset-top,0px)}
 body{margin:0;background:var(--bg);color:var(--tx);font-family:Tahoma,"Vazirmatn","Segoe UI",sans-serif;line-height:1.7}
 header{background:var(--pr);color:#fff;padding:18px 16px;text-align:center}
 header h1{margin:0;font-size:1.25rem}header p{margin:4px 0 0;opacity:.9;font-size:.9rem}
-main{max-width:900px;margin:0 auto;padding:16px}
+main{max-width:none;width:100%;box-sizing:border-box;margin:0;padding:16px 3vw}
 .tabs{display:flex;gap:8px;margin-bottom:14px}
 .tabs button{flex:1;padding:10px;border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:10px;font:inherit;cursor:pointer}
 .tabs button.on{background:var(--pr);color:#fff;border-color:var(--pr)}
@@ -31,6 +31,7 @@ input,select{width:100%;box-sizing:border-box;padding:9px;border:1px solid var(-
 th,td{padding:8px;border-bottom:1px solid var(--bd);text-align:right;white-space:nowrap}th{color:var(--mu)}
 .tag{background:var(--pr2);color:var(--pr);border-radius:6px;padding:2px 8px;font-size:.78rem}
 .hid{display:none}
+footer{max-width:none;margin:0;padding:14px 3vw 24px;text-align:center;color:var(--mu);font-size:.8rem;border-top:1px solid var(--bd)}
 </style>
 </head>
 <body>
@@ -42,6 +43,7 @@ th,td{padding:8px;border-bottom:1px solid var(--bd);text-align:right;white-space
 <div id="done" class="card ok hid"></div>
 </section>
 </main>
+<footer dir="ltr" lang="en">Prepared by Jamal Bagheri, Specialist Staff Expert, Deputy for Treatment, Kurdistan University of Medical Sciences.</footer>
 <script>
 const $=id=>document.getElementById(id);
 const fa2en=s=>String(s==null?"":s).replace(/[۰-۹]/g,d=>"۰۱۲۳۴۵۶۷۸۹".indexOf(d)).replace(/[٠-٩]/g,d=>"٠١٢٣٤٥٦٧٨٩".indexOf(d));
