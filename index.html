@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>فرم ثبت‌نام نیروهای متخصص | دانشگاه علوم پزشکی کردستان</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#f4f7f6;--card:#fff;--tx:#1b2a2f;--mu:#5d6f75;--pr:#0b7a75;--pr2:#e3f3f2;--bd:#d5e0e0;--er:#c0392b}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10191b;--card:#172428;--tx:#e6eeee;--mu:#95a8ac;--pr:#3cc4bc;--pr2:#1d3437;--bd:#2b4145;--er:#ff7b6b}}
+:root[data-theme="dark"]{--bg:#10191b;--card:#172428;--tx:#e6eeee;--mu:#95a8ac;--pr:#3cc4bc;--pr2:#1d3437;--bd:#2b4145;--er:#ff7b6b}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:Tahoma,"Vazirmatn","Segoe UI",sans-serif;line-height:1.7}
+header{background:var(--pr);color:#fff;padding:18px 16px;text-align:center}
+header h1{margin:0;font-size:1.25rem}header p{margin:4px 0 0;opacity:.9;font-size:.9rem}
+main{max-width:900px;margin:0 auto;padding:16px}
+.tabs{display:flex;gap:8px;margin-bottom:14px}
+.tabs button{flex:1;padding:10px;border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:10px;font:inherit;cursor:pointer}
+.tabs button.on{background:var(--pr);color:#fff;border-color:var(--pr)}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:16px;margin-bottom:14px}
+.card h2{margin:0 0 12px;font-size:1.05rem;color:var(--pr)}
+.g{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+label{display:block;font-size:.85rem;color:var(--mu);margin-bottom:3px}
+input,select{width:100%;box-sizing:border-box;padding:9px;border:1px solid var(--bd);border-radius:8px;background:var(--bg);color:var(--tx);font:inherit}
+.err{color:var(--er);font-size:.8rem;min-height:1em}
+.btn{background:var(--pr);color:#fff;border:0;border-radius:10px;padding:11px 22px;font:inherit;cursor:pointer}
+.btn.s{background:var(--pr2);color:var(--pr)}
+.note{background:var(--pr2);border-radius:10px;padding:10px 12px;font-size:.85rem;margin-bottom:12px}
+.ok{text-align:center;padding:24px}.ok .sc{font-size:2.4rem;color:var(--pr);font-weight:700}
+.tw{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.85rem;min-width:760px}
+th,td{padding:8px;border-bottom:1px solid var(--bd);text-align:right;white-space:nowrap}th{color:var(--mu)}
+.tag{background:var(--pr2);color:var(--pr);border-radius:6px;padding:2px 8px;font-size:.78rem}
+.hid{display:none}
+</style>
+</head>
+<body>
+<header><h1>فرم ثبت‌نام و انتخاب محل خدمت نیروهای متخصص</h1><p>دانشگاه علوم پزشکی کردستان — بر اساس دستورالعمل اجرایی تعهد خدمت رشته‌های تخصصی پزشکی بالینی</p></header>
+<main>
+<section id="form">
+<div id="fbox"><div id="fields"></div>
+<div style="text-align:center"><button class="btn" id="sub">ثبت اطلاعات</button></div></div>
+<div id="done" class="card ok hid"></div>
+</section>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+const fa2en=s=>String(s==null?"":s).replace(/[۰-۹]/g,d=>"۰۱۲۳۴۵۶۷۸۹".indexOf(d)).replace(/[٠-٩]/g,d=>"٠١٢٣٤٥٦٧٨٩".indexOf(d));
+const PV="آذربایجان شرقی،آذربایجان غربی،اردبیل،اصفهان،البرز،ایلام،بوشهر،تهران،چهارمحال و بختیاری،خراسان جنوبی،خراسان رضوی،خراسان شمالی،خوزستان،زنجان،سمنان،سیستان و بلوچستان،فارس،قزوین،قم،کردستان،کرمان،کرمانشاه،کهگیلویه و بویراحمد،گلستان،گیلان،لرستان،مازندران،مرکزی،هرمزگان،همدان،یزد".split("،");
+const AJ={"آذربایجان شرقی":"آذربایجان غربی،اردبیل،زنجان","آذربایجان غربی":"زنجان،کردستان","اردبیل":"زنجان،گیلان","اصفهان":"یزد،فارس،چهارمحال و بختیاری،کهگیلویه و بویراحمد،لرستان،مرکزی،قم،سمنان،خراسان جنوبی","البرز":"تهران،قزوین،مازندران","ایلام":"خوزستان،لرستان،کرمانشاه","بوشهر":"خوزستان،کهگیلویه و بویراحمد،فارس،هرمزگان","تهران":"قم،مرکزی،سمنان،مازندران","چهارمحال و بختیاری":"خوزستان،لرستان،کهگیلویه و بویراحمد","خراسان جنوبی":"خراسان رضوی،کرمان،یزد،سمنان،سیستان و بلوچستان","خراسان رضوی":"خراسان شمالی،سمنان،یزد","خراسان شمالی":"گلستان،سمنان","خوزستان":"کهگیلویه و بویراحمد،لرستان","زنجان":"قزوین،همدان،کردستان،گیلان","سمنان":"گلستان،مازندران","سیستان و بلوچستان":"کرمان،هرمزگان","فارس":"هرمزگان،کرمان،یزد،کهگیلویه و بویراحمد","قزوین":"گیلان،مازندران،همدان،مرکزی","قم":"مرکزی","کردستان":"همدان،کرمانشاه","کرمان":"یزد،هرمزگان","کرمانشاه":"لرستان،همدان","گلستان":"مازندران","گیلان":"مازندران","لرستان":"همدان،مرکزی","مازندران":"","مرکزی":"همدان","هرمزگان":"","همدان":"","یزد":""};
+const A={};PV.forEach(p=>A[p]=new Set());Object.keys(AJ).forEach(p=>AJ[p].split("،").filter(Boolean).forEach(q=>{A[p].add(q);A[q].add(p)}));
+const GL=["الف: ایثارگران","ب: بانوان متأهل دارای فرزند","ج: بانوان متأهل بدون فرزند","د: آقایان متأهل","ه: بانوان مجرد","و: آقایان مجرد"];
+const FD=["اطفال", "ارتوپدی", "اورولوژی", "بیهوشی", "پاتولوژی", "پزشکی اجتماعی", "پزشکی خانواده", "پزشکی قانونی", "پزشکی هسته\u200cای", "پزشکی ورزشی", "پوست", "چشم\u200cپزشکی", "رادیولوژی", "رادیوانکولوژی (رادیوتراپی)", "روان\u200cپزشکی", "زنان و زایمان", "طب اورژانس", "طب فیزیکی و توانبخشی", "طب کار", "عفونی", "قلب و عروق", "گوش و حلق و بینی", "مغز و اعصاب (نورولوژی)", "داخلی", "جراحی عمومی", "جراحی مغز و اعصاب", "جراحی پلاستیک و ترمیمی", "جراحی قلب", "جراحی عروق", "سایر"];
+const CT=["سنندج","بانه","بیجار","دیواندره","دهگلان","سروآباد","سقز","قروه","کامیاران","مریوان","مشترک (مریوان - سروآباد)"];
+const JT="مشترک (مریوان - سروآباد)";
+const YN=["خیر","بله"],KS=[["3","سه پنجم"],["3.5","سه و نیم پنجم"],["4","چهار پنجم"],["4.5","چهار و نیم پنجم"],["5","پنج پنجم"]];
+const S=[["اطلاعات فردی",[["fn","نام"],["ln","نام خانوادگی"],["fa","نام پدر"],["nid","کد ملی (۱۰ رقم)"],["bd","تاریخ تولد (۱۳۶۸/۰۵/۱۲)"],["sx","جنسیت","s",["مرد","زن"]],["ms","وضعیت تأهل","s",["مجرد","متأهل"]],["ch","تعداد فرزندان","n"],["ph","تلفن همراه"],["bp","استان محل تولد (شناسنامه)","s",PV],["hp","استان محل تحصیل در دبیرستان","s",PV],["iv","وضعیت ایثارگری","s",["ندارد","همسر یا فرزند شهید","همسر یا فرزند مفقودالاثر جنگ","فرزند جانباز بالای ۷۰٪","آزاده","جانباز بالای ۵۰٪"]],["sp","همسر متخصص متعهد خدمت در همین دانشگاه","s",YN]]],
+["اطلاعات تحصیلی",[["fd","رشته تخصصی","s",FD,1],["un","دانشگاه محل تحصیل"],["gy","سال فراغت از تحصیل"],["dp","وضعیت آزمون دانشنامه تخصصی","s",["قبول در آزمون کتبی و شفاهی","فقط قبول در آزمون کتبی"]],["ex","نمره کتبی آزمون دانشنامه تخصصی","n"]]],
+["سوابق خدمت (با مدارک معتبر)",[["ml","ماه خدمت سربازی به عنوان پزشک عمومی","n"],["pl","وضعیت طرح نیروی انسانی / پیام‌آور بهداشت","s",["تکمیل (دارای گواهی پایان طرح)","ناقص (دارای گواهی انجام قسمتی از طرح)","دارای گواهی معافیت از طرح پزشکی عمومی","استریت (طرح عمومی را انجام نداده‌ام)"]],["pm","ماه خدمت طرح (در حالت ناقص)","n"],["pk","ضریب منطقه طرح (ناقص)","s",KS,1],["gm","ماه خدمت در بخش دولتی","n"],["gk","ضریب منطقه خدمت دولتی","s",KS,1]]],
+["انتخاب محل خدمت (استان)",[["c1","اولویت اول","s",PV],["c2","اولویت دوم","s",PV,1],["c3","اولویت سوم","s",PV,1],["c4","اولویت چهارم","s",PV,1]]],["انتخاب شهرستان (اولویت ۱ تا ۵)",[["w1","شهرستان اولویت اول *","s",CT,1],["w2","شهرستان اولویت دوم *","s",CT,1],["w3","شهرستان اولویت سوم *","s",CT,1],["w4","شهرستان اولویت چهارم","s",CT,1],["w5","شهرستان اولویت پنجم","s",CT,1]]]];
+S.forEach(([t,fs])=>{const c=document.createElement("div");c.className="card";c.innerHTML="<h2>"+t+'</h2><div class="g"></div>';const g=c.lastChild;
+fs.forEach(([id,lb,k,o,e])=>{const d=document.createElement("div");const l=document.createElement("label");l.textContent=lb;d.appendChild(l);
+let i;if(k==="s"){i=document.createElement("select");(e?[""].concat(o):o).forEach(v=>{const x=document.createElement("option");const a=Array.isArray(v);x.textContent=a?v[1]:v;x.value=a?v[0]:v;i.appendChild(x)})}
+else{i=document.createElement("input");if(k==="n"){i.type="number";i.min=0;i.step="any";i.value=0}}
+i.id=id;d.appendChild(i);const r=document.createElement("div");r.className="err";d.appendChild(r);g.appendChild(d)});$("fields").appendChild(c)});
+function syncJt(){const ok=$("fd").value==="زنان و زایمان";["w1","w2","w3","w4","w5"].forEach(id=>{const e=$(id);[...e.options].forEach(o=>{if(o.value===JT){o.disabled=!ok;o.hidden=!ok}});if(!ok&&e.value===JT)e.value=""})}
+$("fd").onchange=syncJt;syncJt();
+const v=id=>fa2en($(id).value).trim(),nm=id=>parseFloat(v(id))||0;
+const r1=x=>Math.round(x*10)/10;
+function calc(r){
+ const N=[r.bp,r.hp],C=[r.c1,r.c2,r.c3,r.c4].filter(Boolean);
+ const okd=r.dp==="قبول در آزمون کتبی و شفاهی",dip=okd?10:0,ex=okd?r1(r.ex*0.2):0,mil=r.ml;
+ const plan=r.pl.startsWith("تکمیل")?24:r.pl.startsWith("ناقص")?Math.min(24,r1(r.pm*5/r.pk)):0;
+ const gov=r.gm>=1?Math.min(20,r1(r.gm*5/r.gk)):0;
+ const nat=N.includes(r.c1)?50:0;
+ const adj=nat?0:N.some(p=>C.some((c,i)=>A[p].has(c)||(i>0&&c===p)))?20:0;
+ let grp=r.iv!=="ندارد"?0:r.sx==="زن"?(r.ms==="متأهل"?(r.kids>0?1:2):4):(r.ms==="متأهل"?3:5);
+ return{det:[dip,ex,mil,plan,gov,nat,adj],score:r1(dip+ex+mil+plan+gov+nat+adj),grp};
+}
+function read(){
+ document.querySelectorAll(".err").forEach(e=>e.textContent="");let ok=true;
+ const bad=(id,m)=>{$(id).parentNode.querySelector(".err").textContent=m;ok=false};
+ ["fn","ln","fa","fd","un"].forEach(id=>{if(!v(id))bad(id,"الزامی است")});
+ if(!/^\d{10}$/.test(v("nid")))bad("nid","کد ملی باید ۱۰ رقم باشد");
+ if(!/^\d{4}\/\d{1,2}\/\d{1,2}$/.test(v("bd")))bad("bd","قالب تاریخ صحیح نیست");
+ if(!/^09\d{9}$/.test(v("ph")))bad("ph","شماره موبایل معتبر نیست");
+ if(!/^\d{4}$/.test(v("gy")))bad("gy","سال ۴ رقمی وارد کنید");
+ if(v("pl").startsWith("ناقص")&&(nm("pm")<=0||nm("pk")<=0))bad("pm","ماه و ضریب منطقه را وارد کنید");
+ if(nm("gm")>0&&nm("gk")<=0)bad("gk","ضریب منطقه را وارد کنید");
+ const c=[v("c1"),v("c2"),v("c3"),v("c4")].filter(Boolean);if(new Set(c).size!==c.length)bad("c1","استان‌های انتخابی تکراری است");
+ ["w1","w2","w3"].forEach(id=>{if(!v(id))bad(id,"انتخاب این شهرستان الزامی است")});
+ if([v("w1"),v("w2"),v("w3"),v("w4"),v("w5")].includes(JT)&&v("fd")!=="زنان و زایمان")bad("w1","گزینه‌ی مشترک فقط برای رشته‌ی زنان و زایمان قابل انتخاب است");
+ const w=[v("w1"),v("w2"),v("w3"),v("w4"),v("w5")].filter(Boolean);if(new Set(w).size!==w.length)bad("w1","شهرستان‌های انتخابی تکراری است");
+ if(!ok)return null;
+ const r={first:v("fn"),last:v("ln"),father:v("fa"),nid:v("nid"),birth:v("bd"),sx:v("sx"),ms:v("ms"),kids:nm("ch"),phone:v("ph"),bp:v("bp"),hp:v("hp"),iv:v("iv"),sp:v("sp"),field:v("fd"),univ:v("un"),gy:v("gy"),dp:v("dp"),ex:nm("ex"),ml:nm("ml"),pl:v("pl"),pm:nm("pm"),pk:nm("pk"),gm:Math.floor(nm("gm")),gk:nm("gk"),c1:v("c1"),c2:v("c2"),c3:v("c3"),c4:v("c4"),w1:v("w1"),w2:v("w2"),w3:v("w3"),w4:v("w4"),w5:v("w5"),ts:Date.now()};
+ return Object.assign(r,calc(r));
+}
+const SCRIPT_URL="https://script.google.com/macros/s/AKfycbzS08UfYPcoVxJPy6gTygS1jsJW6m5Bu1EOfv-aEFzPTh48Ei-nOzoLO4futqZv5QPC2A/exec";
+$("sub").onclick=async()=>{const r=read();if(!r)return;
+ if(SCRIPT_URL.startsWith("PASTE")){alert("آدرس وب‌اپ Google Apps Script هنوز در فایل تنظیم نشده است.");return}
+ $("sub").disabled=true;
+ try{await fetch(SCRIPT_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(r)});
+ $("fbox").classList.add("hid");$("done").classList.remove("hid");
+ $("done").innerHTML='<h2>اطلاعات شما ارسال شد</h2><p>گروه: '+GL[r.grp]+'</p><p>امتیاز اولیه:</p><div class="sc">'+r.score+'</div><p style="color:var(--mu)">امتیاز نهایی پس از بررسی مدارک توسط معاونت درمان تأیید می‌شود. اصل مدارک را به معاونت درمان دانشگاه تحویل دهید.</p>';
+ }catch(e){alert("ارسال انجام نشد؛ اتصال اینترنت را بررسی کنید.");$("sub").disabled=false}};
+</script>
+</body>
+</html>
