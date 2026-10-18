@@ -3,50 +3,172 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>فرم ثبت‌نام نیروهای متخصص | دانشگاه علوم پزشکی کردستان</title>
+<title>ثبت‌نام نیروهای متخصص</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
---bg:#f4f7f6;--card:#fff;--tx:#1b2a2f;--mu:#5d6f75;--pr:#0b7a75;--pr2:#e3f3f2;--bd:#d5e0e0;--er:#c0392b}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10191b;--card:#172428;--tx:#e6eeee;--mu:#95a8ac;--pr:#3cc4bc;--pr2:#1d3437;--bd:#2b4145;--er:#ff7b6b}}
-:root[data-theme="dark"]{--bg:#10191b;--card:#172428;--tx:#e6eeee;--mu:#95a8ac;--pr:#3cc4bc;--pr2:#1d3437;--bd:#2b4145;--er:#ff7b6b}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
-body{margin:0;background:var(--bg);color:var(--tx);font-family:Tahoma,"Vazirmatn","Segoe UI",sans-serif;line-height:1.7}
-header{background:var(--pr);color:#fff;padding:18px 16px;text-align:center}
-header h1{margin:0;font-size:1.25rem}header p{margin:4px 0 0;opacity:.9;font-size:.9rem}
-main{max-width:none;width:100%;box-sizing:border-box;margin:0;padding:16px 3vw}
-.tabs{display:flex;gap:8px;margin-bottom:14px}
-.tabs button{flex:1;padding:10px;border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:10px;font:inherit;cursor:pointer}
-.tabs button.on{background:var(--pr);color:#fff;border-color:var(--pr)}
-.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:16px;margin-bottom:14px}
-.card h2{margin:0 0 12px;font-size:1.05rem;color:var(--pr)}
-.g{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
-label{display:block;font-size:.85rem;color:var(--mu);margin-bottom:3px}
-input,select{width:100%;box-sizing:border-box;padding:9px;border:1px solid var(--bd);border-radius:8px;background:var(--bg);color:var(--tx);font:inherit}
-.err{color:var(--er);font-size:.8rem;min-height:1em}
-.btn{background:var(--pr);color:#fff;border:0;border-radius:10px;padding:11px 22px;font:inherit;cursor:pointer}
-.btn.s{background:var(--pr2);color:var(--pr)}
-.note{background:var(--pr2);border-radius:10px;padding:10px 12px;font-size:.85rem;margin-bottom:12px}
-.ok{text-align:center;padding:24px}.ok .sc{font-size:2.4rem;color:var(--pr);font-weight:700}
-.tw{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.85rem;min-width:760px}
-th,td{padding:8px;border-bottom:1px solid var(--bd);text-align:right;white-space:nowrap}th{color:var(--mu)}
-.tag{background:var(--pr2);color:var(--pr);border-radius:6px;padding:2px 8px;font-size:.78rem}
-.hid{display:none}
-footer{max-width:none;margin:0;padding:14px 3vw 24px;text-align:center;color:var(--mu);font-size:.8rem;border-top:1px solid var(--bd)}
+/* Layout: deep-teal institutional header over a cool grey field; form cards overlap the header edge. Gold appears only as a hairline and the co-commitment star. */
+:root{
+--font:"Vazirmatn",Tahoma,"Segoe UI",system-ui,sans-serif;
+--bg:#edf1f4;--surface:#ffffff;--surface2:#f4f7f9;--ink:#13222d;--muted:#566876;--line:#d5dfe6;
+--brand:#0a6a86;--brand-ink:#ffffff;--brand-soft:#e0f0f5;
+--hero:#0b3a4f;--hero-ink:#e8f4f8;--gold:#c8973a;
+--err:#b3261e;--err-soft:#fbe9e7;--ok:#1b7a4a;--ok-soft:#e3f3ea;
+--ring:rgba(10,106,134,.3);--shadow:0 1px 2px rgba(11,58,79,.06),0 10px 28px rgba(11,58,79,.07);
+--gbL:92%;--gbT:25%;
+direction:rtl;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+--bg:#0b151c;--surface:#12212b;--surface2:#172a36;--ink:#e2ecf1;--muted:#92a7b4;--line:#25394a;
+--brand:#5cc3e0;--brand-ink:#04222d;--brand-soft:#173747;
+--hero:#0a2431;--hero-ink:#e2f0f5;--gold:#e0b45a;
+--err:#ff9088;--err-soft:#3b201f;--ok:#74d6a0;--ok-soft:#15301f;
+--ring:rgba(92,195,224,.38);--shadow:0 1px 2px rgba(0,0,0,.4),0 10px 28px rgba(0,0,0,.35);
+--gbL:21%;--gbT:82%;color-scheme:dark}}
+:root[data-theme="dark"]{
+--bg:#0b151c;--surface:#12212b;--surface2:#172a36;--ink:#e2ecf1;--muted:#92a7b4;--line:#25394a;
+--brand:#5cc3e0;--brand-ink:#04222d;--brand-soft:#173747;
+--hero:#0a2431;--hero-ink:#e2f0f5;--gold:#e0b45a;
+--err:#ff9088;--err-soft:#3b201f;--ok:#74d6a0;--ok-soft:#15301f;
+--ring:rgba(92,195,224,.38);--shadow:0 1px 2px rgba(0,0,0,.4),0 10px 28px rgba(0,0,0,.35);
+--gbL:21%;--gbT:82%;color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 15px/1.8 var(--font)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:40;background:var(--hero)}
+:focus-visible{outline:3px solid var(--ring);outline-offset:2px}
+.wrap{padding-left:max(16px,2.5vw,env(safe-area-inset-left,0px));padding-right:max(16px,2.5vw,env(safe-area-inset-right,0px))}
+
+.top{background:var(--hero);color:var(--hero-ink)}
+.top .wrap{display:flex;align-items:center;gap:12px;padding-block:12px}
+.mark{width:34px;height:34px;flex:none;color:var(--gold)}
+.org{font-weight:700;font-size:1.02rem;line-height:1.5}
+.hero{background:var(--hero);color:var(--hero-ink);border-top:1px solid rgba(255,255,255,.14)}
+.hero .wrap{padding-block:30px 68px;text-align:center}
+.rule{width:56px;height:3px;border-radius:2px;background:var(--gold);margin:0 auto 14px}
+h1{margin:0 0 10px;font-size:clamp(1.3rem,2.4vw,1.9rem);font-weight:800;line-height:1.55;text-wrap:balance}
+.hero p{margin:0 auto;max-width:68ch;opacity:.85;font-size:.95rem}
+main.wrap{margin-top:-44px;padding-bottom:28px}
+
+.seg{display:inline-flex;gap:4px;padding:4px;background:var(--surface);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.seg button{border:0;background:transparent;color:var(--muted);font:600 .9rem var(--font);padding:8px 18px;border-radius:9px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--brand);color:var(--brand-ink)}
+
+.banner{display:flex;gap:10px;align-items:flex-start;padding:12px 16px;border-radius:12px;border:1px solid var(--line);background:var(--brand-soft);color:var(--ink);font-size:.88rem;margin-bottom:16px}
+.banner.err{background:var(--err-soft);border-color:var(--err)}
+.banner ul{margin:0;padding-inline-start:18px}
+
+.prog{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:10px 16px;margin-bottom:16px;box-shadow:var(--shadow)}
+.prog .pt{display:flex;justify-content:space-between;gap:8px;font-size:.8rem;color:var(--muted);margin-bottom:6px;font-variant-numeric:tabular-nums}
+.track{height:6px;border-radius:3px;background:var(--line);overflow:hidden}
+.fill{height:100%;width:0;background:var(--brand);border-radius:3px;transition:width .25s}
+@media (prefers-reduced-motion:reduce){.fill{transition:none}}
+
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);margin-bottom:18px;overflow:hidden}
+.ch{display:flex;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid var(--line)}
+.ch .grow{flex:1;min-width:0}
+.step{width:32px;height:32px;border-radius:50%;background:var(--brand-soft);color:var(--brand);display:grid;place-items:center;font-weight:800;font-size:.9rem;flex:none}
+.card h2{margin:0;font-size:1.05rem;font-weight:700;line-height:1.5}
+.sub{margin:0;color:var(--muted);font-size:.82rem}
+.g{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px 18px;padding:20px}
+
+.f{min-width:0}
+.f.w2{grid-column:span 2}
+@media (max-width:560px){.f.w2{grid-column:auto}}
+.f label{display:block;font-size:.82rem;font-weight:500;color:var(--muted);margin-bottom:6px}
+.f.req label::after{content:" *";color:var(--err)}
+input,select{width:100%;height:44px;padding:0 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface2);color:var(--ink);font:inherit;transition:border-color .15s,box-shadow .15s}
+input::placeholder{color:var(--muted);opacity:.7}
+input:focus-visible,select:focus-visible{outline:none;border-color:var(--brand);box-shadow:0 0 0 4px var(--ring);background:var(--surface)}
+.f.bad input,.f.bad select{border-color:var(--err);box-shadow:0 0 0 3px var(--err-soft)}
+.num{direction:ltr;text-align:right}
+.hint{color:var(--muted);font-size:.76rem;margin-top:4px}
+.err{color:var(--err);font-size:.78rem;margin-top:4px}
+.err:empty{display:none}
+
+.btn{height:48px;padding:0 30px;border:0;border-radius:12px;background:var(--brand);color:var(--brand-ink);font:700 1rem var(--font);cursor:pointer;transition:filter .15s}
+.btn:hover{filter:brightness(1.08)}
+.btn:disabled{opacity:.6;cursor:progress}
+.btn.ghost{height:40px;padding:0 16px;background:var(--brand-soft);color:var(--brand);font-size:.88rem}
+.actions{display:flex;justify-content:flex-end;padding:4px 0 8px}
+@media (max-width:520px){.actions .btn{width:100%}}
+
+.rtop{display:flex;gap:14px;align-items:center;padding:20px}
+.okic{width:48px;height:48px;border-radius:50%;background:var(--ok-soft);color:var(--ok);display:grid;place-items:center;flex:none}
+.rtop h2{font-size:1.2rem}.rtop p{margin:0;color:var(--muted);font-size:.84rem}
+.rgrid{display:grid;grid-template-columns:minmax(220px,300px) 1fr;border-top:1px solid var(--line)}
+.score{padding:22px;border-inline-end:1px solid var(--line);display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.score .k{color:var(--muted);font-size:.84rem}
+.score .big{font-size:3.2rem;font-weight:800;line-height:1.1;color:var(--brand);font-variant-numeric:tabular-nums}
+.bd{padding:18px 22px;display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:4px 28px;align-content:start}
+.kv{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px dashed var(--line);font-size:.88rem}
+.kv span:first-child{color:var(--muted);flex:none}
+.kv b{font-variant-numeric:tabular-nums;text-align:left;min-width:0}
+.kv.zero b{color:var(--muted);font-weight:400}
+.kv.wide{grid-column:1/-1}
+@media (max-width:700px){.rgrid{grid-template-columns:1fr}.score{border-inline-end:0;border-bottom:1px solid var(--line)}}
+
+.gb{display:inline-flex;align-items:center;gap:4px;padding:2px 10px;border-radius:999px;font-size:.78rem;font-weight:600;background:hsl(var(--h) 55% var(--gbL));color:hsl(var(--h) 55% var(--gbT));white-space:nowrap}
+
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-bottom:14px}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 18px;box-shadow:var(--shadow)}
+.tile .k{color:var(--muted);font-size:.8rem}
+.tile .n{font-size:1.7rem;font-weight:800;line-height:1.4;font-variant-numeric:tabular-nums}
+.gcounts{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.filters{display:grid;grid-template-columns:2fr repeat(3,1fr);gap:10px;padding:16px 20px}
+@media (max-width:900px){.filters{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.filters{grid-template-columns:1fr}}
+.cnt{padding:0 20px 10px;color:var(--muted);font-size:.82rem}
+.tw{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:900px;font-size:.86rem}
+th{background:var(--surface2);color:var(--muted);font-weight:600;text-align:right;padding:10px 12px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+tbody tr:nth-child(even){background:var(--surface2)}
+.nw{white-space:nowrap}
+.pill{display:inline-block;margin:2px 0 2px 4px;padding:0 8px;border-radius:6px;background:var(--brand-soft);color:var(--brand);font-size:.74rem;white-space:nowrap}
+.sc{font-weight:800;font-size:1rem;font-variant-numeric:tabular-nums}
+.bar{height:5px;border-radius:3px;background:var(--line);margin-top:4px;min-width:70px}
+.bar i{display:block;height:100%;background:var(--brand);border-radius:3px}
+.star{color:var(--gold)}
+
+footer{border-top:1px solid var(--line);color:var(--muted);font-size:.8rem;text-align:center;padding-block:18px 28px}
 </style>
 </head>
 <body>
-<header><h1>فرم ثبت‌نام و انتخاب محل خدمت نیروهای متخصص</h1><p>دانشگاه علوم پزشکی کردستان — بر اساس دستورالعمل اجرایی تعهد خدمت رشته‌های تخصصی پزشکی بالینی</p></header>
-<main>
+<div class="top"><div class="wrap">
+<svg class="mark" viewBox="0 0 36 36" aria-hidden="true"><rect x="1.5" y="1.5" width="33" height="33" rx="9" fill="none" stroke="currentColor" opacity=".55"/><path d="M18 9v18M9 18h18" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/></svg>
+<div class="org">معاونت درمان دانشگاه علوم پزشکی کردستان</div>
+</div></div>
+<div class="hero"><div class="wrap">
+<div class="rule"></div>
+<h1>فرم ثبت‌نام و انتخاب شهرستان محل خدمت نیروهای متخصص مشمول تعهدات قانونی سال ۱۴۰۵ (دانشگاه علوم پزشکی کردستان)</h1>
+<p>بر اساس دستورالعمل اجرایی تعهد خدمت رشته‌های تخصصی پزشکی بالینی. امتیاز و گروه شما پس از ثبت‌نام محاسبه و نمایش داده می‌شود.</p>
+</div></div>
+<main class="wrap">
+
 <section id="form">
-<div id="fbox"><div id="fields"></div>
-<div style="text-align:center"><button class="btn" id="sub">ثبت اطلاعات</button></div></div>
-<div id="done" class="card ok hid"></div>
+<div id="mode" class="banner" hidden></div>
+<div id="fbox">
+<div class="banner" id="intro"><ul><li>فیلدهای ستاره‌دار الزامی است.</li><li>هر کد ملی فقط یک‌بار می‌تواند ثبت‌نام کند.</li></ul></div>
+<div class="prog"><div class="pt"><span id="ptxt"></span><span id="ppct"></span></div><div class="track"><div class="fill" id="pbar"></div></div></div>
+<div id="fields"></div>
+<div id="alert" class="banner err" role="alert" hidden></div>
+<div class="actions"><button class="btn" id="sub" type="button">ثبت اطلاعات</button></div>
+</div>
+<div id="done" class="card" hidden></div>
 </section>
+
 </main>
-<footer dir="ltr" lang="en">Prepared by Jamal Bagheri, Specialist Staff Expert, Deputy for Treatment, Kurdistan University of Medical Sciences.</footer>
+<footer class="wrap" dir="ltr" lang="en">Prepared by Jamal Bagheri, Specialist Staff Expert, Deputy for Treatment, Kurdistan University of Medical Sciences.</footer>
+
 <script>
 const $=id=>document.getElementById(id);
+const el=(t,c,x)=>{const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e};
 const fa2en=s=>String(s==null?"":s).replace(/[۰-۹]/g,d=>"۰۱۲۳۴۵۶۷۸۹".indexOf(d)).replace(/[٠-٩]/g,d=>"٠١٢٣٤٥٦٧٨٩".indexOf(d));
+const fmt=n=>{try{return Number(n).toLocaleString("fa-IR",{maximumFractionDigits:1})}catch(e){return String(n)}};
+const sm=()=>matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth";
 const PV="آذربایجان شرقی،آذربایجان غربی،اردبیل،اصفهان،البرز،ایلام،بوشهر،تهران،چهارمحال و بختیاری،خراسان جنوبی،خراسان رضوی،خراسان شمالی،خوزستان،زنجان،سمنان،سیستان و بلوچستان،فارس،قزوین،قم،کردستان،کرمان،کرمانشاه،کهگیلویه و بویراحمد،گلستان،گیلان،لرستان،مازندران،مرکزی،هرمزگان،همدان،یزد".split("،");
 const AJ={"آذربایجان شرقی":"آذربایجان غربی،اردبیل،زنجان","آذربایجان غربی":"زنجان،کردستان","اردبیل":"زنجان،گیلان","اصفهان":"یزد،فارس،چهارمحال و بختیاری،کهگیلویه و بویراحمد،لرستان،مرکزی،قم،سمنان،خراسان جنوبی","البرز":"تهران،قزوین،مازندران","ایلام":"خوزستان،لرستان،کرمانشاه","بوشهر":"خوزستان،کهگیلویه و بویراحمد،فارس،هرمزگان","تهران":"قم،مرکزی،سمنان،مازندران","چهارمحال و بختیاری":"خوزستان،لرستان،کهگیلویه و بویراحمد","خراسان جنوبی":"خراسان رضوی،کرمان،یزد،سمنان،سیستان و بلوچستان","خراسان رضوی":"خراسان شمالی،سمنان،یزد","خراسان شمالی":"گلستان،سمنان","خوزستان":"کهگیلویه و بویراحمد،لرستان","زنجان":"قزوین،همدان،کردستان،گیلان","سمنان":"گلستان،مازندران","سیستان و بلوچستان":"کرمان،هرمزگان","فارس":"هرمزگان،کرمان،یزد،کهگیلویه و بویراحمد","قزوین":"گیلان،مازندران،همدان،مرکزی","قم":"مرکزی","کردستان":"همدان،کرمانشاه","کرمان":"یزد،هرمزگان","کرمانشاه":"لرستان،همدان","گلستان":"مازندران","گیلان":"مازندران","لرستان":"همدان،مرکزی","مازندران":"","مرکزی":"همدان","هرمزگان":"","همدان":"","یزد":""};
 const A={};PV.forEach(p=>A[p]=new Set());Object.keys(AJ).forEach(p=>AJ[p].split("،").filter(Boolean).forEach(q=>{A[p].add(q);A[q].add(p)}));
@@ -55,18 +177,7 @@ const FD=["اطفال", "ارتوپدی", "اورولوژی", "بیهوشی", "�
 const CT=["سنندج","بانه","بیجار","دیواندره","دهگلان","سروآباد","سقز","قروه","کامیاران","مریوان","مشترک (مریوان - سروآباد)"];
 const JT="مشترک (مریوان - سروآباد)";
 const YN=["خیر","بله"],KS=[["3","سه پنجم"],["3.5","سه و نیم پنجم"],["4","چهار پنجم"],["4.5","چهار و نیم پنجم"],["5","پنج پنجم"]];
-const S=[["اطلاعات فردی",[["fn","نام"],["ln","نام خانوادگی"],["fa","نام پدر"],["nid","کد ملی (۱۰ رقم)"],["bd","تاریخ تولد (۱۳۶۸/۰۵/۱۲)"],["sx","جنسیت","s",["مرد","زن"]],["ms","وضعیت تأهل","s",["مجرد","متأهل"]],["ch","تعداد فرزندان","n"],["ph","تلفن همراه"],["bp","استان محل تولد (شناسنامه)","s",PV],["hp","استان محل تحصیل در دبیرستان","s",PV],["iv","وضعیت ایثارگری","s",["ندارد","همسر یا فرزند شهید","همسر یا فرزند مفقودالاثر جنگ","فرزند جانباز بالای ۷۰٪","آزاده","جانباز بالای ۵۰٪"]],["sp","همسر متخصص متعهد خدمت در همین دانشگاه","s",YN]]],
-["اطلاعات تحصیلی",[["fd","رشته تخصصی","s",FD,1],["un","دانشگاه محل تحصیل"],["gy","سال فراغت از تحصیل"],["dp","وضعیت آزمون دانشنامه تخصصی","s",["قبول در آزمون کتبی و شفاهی","فقط قبول در آزمون کتبی"]],["ex","نمره کتبی آزمون دانشنامه تخصصی","n"]]],
-["سوابق خدمت (با مدارک معتبر)",[["ml","ماه خدمت سربازی به عنوان پزشک عمومی","n"],["pl","وضعیت طرح نیروی انسانی / پیام‌آور بهداشت","s",["تکمیل (دارای گواهی پایان طرح)","ناقص (دارای گواهی انجام قسمتی از طرح)","دارای گواهی معافیت از طرح پزشکی عمومی","استریت (طرح عمومی را انجام نداده‌ام)"]],["pm","ماه خدمت طرح (در حالت ناقص)","n"],["pk","ضریب منطقه طرح (ناقص)","s",KS,1],["gm","ماه خدمت در بخش دولتی","n"],["gk","ضریب منطقه خدمت دولتی","s",KS,1]]],
-["انتخاب محل خدمت (استان)",[["c1","اولویت اول","s",PV],["c2","اولویت دوم","s",PV,1],["c3","اولویت سوم","s",PV,1],["c4","اولویت چهارم","s",PV,1]]],["انتخاب شهرستان (اولویت ۱ تا ۵)",[["w1","شهرستان اولویت اول *","s",CT,1],["w2","شهرستان اولویت دوم *","s",CT,1],["w3","شهرستان اولویت سوم *","s",CT,1],["w4","شهرستان اولویت چهارم","s",CT,1],["w5","شهرستان اولویت پنجم","s",CT,1]]]];
-S.forEach(([t,fs])=>{const c=document.createElement("div");c.className="card";c.innerHTML="<h2>"+t+'</h2><div class="g"></div>';const g=c.lastChild;
-fs.forEach(([id,lb,k,o,e])=>{const d=document.createElement("div");const l=document.createElement("label");l.textContent=lb;d.appendChild(l);
-let i;if(k==="s"){i=document.createElement("select");(e?[""].concat(o):o).forEach(v=>{const x=document.createElement("option");const a=Array.isArray(v);x.textContent=a?v[1]:v;x.value=a?v[0]:v;i.appendChild(x)})}
-else{i=document.createElement("input");if(k==="n"){i.type="number";i.min=0;i.step="any";i.value=0}}
-i.id=id;d.appendChild(i);const r=document.createElement("div");r.className="err";d.appendChild(r);g.appendChild(d)});$("fields").appendChild(c)});
-function syncJt(){const ok=$("fd").value==="زنان و زایمان";["w1","w2","w3","w4","w5"].forEach(id=>{const e=$(id);[...e.options].forEach(o=>{if(o.value===JT){o.disabled=!ok;o.hidden=!ok}});if(!ok&&e.value===JT)e.value=""})}
-$("fd").onchange=syncJt;syncJt();
-const v=id=>fa2en($(id).value).trim(),nm=id=>parseFloat(v(id))||0;
+
 const r1=x=>Math.round(x*10)/10;
 function calc(r){
  const N=[r.bp,r.hp],C=[r.c1,r.c2,r.c3,r.c4].filter(Boolean);
@@ -78,32 +189,153 @@ function calc(r){
  let grp=r.iv!=="ندارد"?0:r.sx==="زن"?(r.ms==="متأهل"?(r.kids>0?1:2):4):(r.ms==="متأهل"?3:5);
  return{det:[dip,ex,mil,plan,gov,nat,adj],score:r1(dip+ex+mil+plan+gov+nat+adj),grp};
 }
+
+const PH="انتخاب کنید…";
+const DL=["مدرک دانشنامه","نمره آزمون","سربازی","طرح نیروی انسانی","خدمت دولتی","بومی","همجوار"];
+const HUE=[160,330,280,215,28,190];
+const CHECK='<svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+function gchip(g,star){const s=el("span","gb",GL[g]);s.style.setProperty("--h",HUE[g]);if(star){const t=el("span","star","★");s.append(t)}return s}
+
+const pick=(id,l,o,x)=>Object.assign({id,l,k:"s",o,e:1},x||{});
+const S=[
+{t:"اطلاعات فردی",d:"مشخصات را مطابق مدارک شناسایی وارد کنید.",f:[
+ {id:"fn",l:"نام",r:1},{id:"ln",l:"نام خانوادگی",r:1},{id:"fa",l:"نام پدر",r:1},
+ {id:"nid",l:"کد ملی",r:1,num:1,ml:10,ph:"۱۰ رقم",h:"هر کد ملی فقط یک‌بار می‌تواند ثبت‌نام کند."},
+ {id:"bd",l:"تاریخ تولد",r:1,num:1,ml:10,ph:"۱۳۶۸/۰۵/۱۲",h:"به صورت سال/ماه/روز"},
+ {id:"ph",l:"تلفن همراه",r:1,num:1,ml:11,ph:"۰۹۱۲۳۴۵۶۷۸۹"},
+ pick("sx","جنسیت",["مرد","زن"],{r:1}),
+ pick("ms","وضعیت تأهل",["مجرد","متأهل"],{r:1}),
+ {id:"ch",l:"تعداد فرزندان",k:"n",ph:"۰"},
+ pick("bp","استان محل تولد (شناسنامه)",PV,{r:1}),
+ pick("hp","استان محل تحصیل در دبیرستان",PV,{r:1}),
+ pick("iv","وضعیت ایثارگری",["ندارد","همسر یا فرزند شهید","همسر یا فرزند مفقودالاثر جنگ","فرزند جانباز بالای ۷۰٪","آزاده","جانباز بالای ۵۰٪"],{e:0}),
+ pick("sp","همسر متخصص متعهد خدمت در همین دانشگاه",YN,{e:0,w:1})]},
+{t:"اطلاعات تحصیلی",d:"رشته و وضعیت آزمون دانشنامه تخصصی.",f:[
+ pick("fd","رشته تخصصی",FD,{r:1}),
+ {id:"un",l:"دانشگاه محل تحصیل",r:1},
+ {id:"gy",l:"سال فراغت از تحصیل",r:1,num:1,ml:4,ph:"۱۴۰۵"},
+ pick("dp","وضعیت آزمون دانشنامه تخصصی",["قبول در آزمون کتبی و شفاهی","فقط قبول در آزمون کتبی"],{r:1,w:1}),
+ {id:"ex",l:"نمره کتبی آزمون دانشنامه تخصصی",k:"n",ph:"۰"}]},
+{t:"سوابق خدمت",d:"فقط سوابقی را وارد کنید که مدرک معتبر دارند.",f:[
+ {id:"ml",l:"ماه خدمت سربازی به عنوان پزشک عمومی",k:"n",ph:"۰"},
+ pick("pl","وضعیت طرح نیروی انسانی / پیام‌آور بهداشت",["تکمیل (دارای گواهی پایان طرح)","ناقص (دارای گواهی انجام قسمتی از طرح)","دارای گواهی معافیت از طرح پزشکی عمومی","استریت (طرح عمومی را انجام نداده‌ام)"],{r:1,w:1}),
+ {id:"pm",l:"ماه خدمت طرح",k:"n",ph:"۰"},
+ pick("pk","ضریب منطقه طرح",KS),
+ {id:"gm",l:"ماه خدمت در بخش دولتی",k:"n",ph:"۰"},
+ pick("gk","ضریب منطقه خدمت دولتی",KS)]},
+{t:"انتخاب محل خدمت (استان)",d:"اولویت اول الزامی است و بقیه اختیاری. استان تکراری مجاز نیست.",f:[
+ pick("c1","اولویت اول",PV,{r:1}),pick("c2","اولویت دوم",PV),pick("c3","اولویت سوم",PV),pick("c4","اولویت چهارم",PV)]},
+{t:"انتخاب شهرستان (اولویت ۱ تا ۵)",d:"سه اولویت اول الزامی است. این بخش روی امتیاز و گروه‌بندی اثری ندارد.",f:[
+ pick("w1","شهرستان اولویت اول",CT,{r:1}),pick("w2","شهرستان اولویت دوم",CT,{r:1}),pick("w3","شهرستان اولویت سوم",CT,{r:1}),
+ pick("w4","شهرستان اولویت چهارم",CT),pick("w5","شهرستان اولویت پنجم",CT)]}
+];
+const REQ=new Set();
+S.forEach((s,si)=>{
+ const c=el("section","card"),h=el("div","ch"),tt=el("div","grow");
+ tt.append(el("h2",0,s.t),el("p","sub",s.d));h.append(el("span","step",fmt(si+1)),tt);
+ const g=el("div","g");
+ s.f.forEach(f=>{
+  const w=el("div","f"+(f.r?" req":"")+(f.w?" w2":""));w.id="f_"+f.id;
+  const l=el("label",0,f.l);l.htmlFor=f.id;w.append(l);
+  let i;
+  if(f.k==="s"){i=el("select");if(f.e)i.append(new Option(PH,""));f.o.forEach(o=>{const a=Array.isArray(o);i.append(new Option(a?o[1]:o,a?o[0]:o))})}
+  else{i=el("input");i.type=f.k==="n"?"number":"text";i.autocomplete="off";
+   if(f.k==="n"){i.min=0;i.step="any";i.inputMode="decimal";i.className="num"}
+   if(f.num){i.className="num";i.inputMode="numeric"}
+   if(f.ml)i.maxLength=f.ml;if(f.ph)i.placeholder=f.ph}
+  i.id=f.id;w.append(i);
+  if(f.h)w.append(el("div","hint",f.h));
+  w.append(el("div","err"));g.append(w);
+  if(f.r)REQ.add(f.id);
+ });
+ c.append(h,g);$("fields").append(c);
+});
+const v=id=>fa2en($(id).value).trim(),nm=id=>parseFloat(v(id))||0;
+const VIS={
+ ch:()=>v("ms")==="متأهل",
+ ex:()=>v("dp").startsWith("قبول در آزمون کتبی و شفاهی"),
+ pm:()=>v("pl").startsWith("ناقص"),
+ pk:()=>v("pl").startsWith("ناقص"),
+ gk:()=>nm("gm")>0
+};
+const isReq=id=>REQ.has(id)||id==="pm"&&VIS.pm()||id==="pk"&&VIS.pk()||id==="gk"&&VIS.gk();
+const RIDS=[...REQ,"pm","pk","gk"];
+function syncJt(){const ok=$("fd").value==="زنان و زایمان";["w1","w2","w3","w4","w5"].forEach(id=>{const e=$(id);[...e.options].forEach(o=>{if(o.value===JT){o.disabled=!ok;o.hidden=!ok}});if(!ok&&e.value===JT)e.value=""})}
+function progress(){const ids=RIDS.filter(isReq),done=ids.filter(id=>v(id)!=="").length,p=Math.round(done/ids.length*100);
+ $("ptxt").textContent=fmt(done)+" از "+fmt(ids.length)+" مورد الزامی تکمیل شده";$("ppct").textContent=fmt(p)+"٪";$("pbar").style.width=p+"%"}
+function sync(){Object.keys(VIS).forEach(id=>{$("f_"+id).hidden=!VIS[id]()});syncJt();progress()}
+const clearErr=id=>{const w=$("f_"+id);if(w){w.classList.remove("bad");w.querySelector(".err").textContent=""}};
+const onEdit=e=>{if(e.target.id)clearErr(e.target.id);sync()};
+$("fields").addEventListener("input",onEdit);$("fields").addEventListener("change",onEdit);
+function showBanner(t){const a=$("alert");a.hidden=!t;a.textContent=t||""}
+function setBusy(b){$("sub").disabled=b;$("sub").textContent=b?"در حال ثبت…":"ثبت اطلاعات"}
+function markBad(id,m){const w=$("f_"+id);if(w.classList.contains("bad"))return;w.classList.add("bad");w.querySelector(".err").textContent=m}
 function read(){
- document.querySelectorAll(".err").forEach(e=>e.textContent="");let ok=true;
- const bad=(id,m)=>{$(id).parentNode.querySelector(".err").textContent=m;ok=false};
- ["fn","ln","fa","fd","un"].forEach(id=>{if(!v(id))bad(id,"الزامی است")});
- if(!/^\d{10}$/.test(v("nid")))bad("nid","کد ملی باید ۱۰ رقم باشد");
- if(!/^\d{4}\/\d{1,2}\/\d{1,2}$/.test(v("bd")))bad("bd","قالب تاریخ صحیح نیست");
- if(!/^09\d{9}$/.test(v("ph")))bad("ph","شماره موبایل معتبر نیست");
- if(!/^\d{4}$/.test(v("gy")))bad("gy","سال ۴ رقمی وارد کنید");
- if(v("pl").startsWith("ناقص")&&(nm("pm")<=0||nm("pk")<=0))bad("pm","ماه و ضریب منطقه را وارد کنید");
- if(nm("gm")>0&&nm("gk")<=0)bad("gk","ضریب منطقه را وارد کنید");
- const c=[v("c1"),v("c2"),v("c3"),v("c4")].filter(Boolean);if(new Set(c).size!==c.length)bad("c1","استان‌های انتخابی تکراری است");
- ["w1","w2","w3"].forEach(id=>{if(!v(id))bad(id,"انتخاب این شهرستان الزامی است")});
- if([v("w1"),v("w2"),v("w3"),v("w4"),v("w5")].includes(JT)&&v("fd")!=="زنان و زایمان")bad("w1","گزینه‌ی مشترک فقط برای رشته‌ی زنان و زایمان قابل انتخاب است");
- const w=[v("w1"),v("w2"),v("w3"),v("w4"),v("w5")].filter(Boolean);if(new Set(w).size!==w.length)bad("w1","شهرستان‌های انتخابی تکراری است");
- if(!ok)return null;
- const r={first:v("fn"),last:v("ln"),father:v("fa"),nid:v("nid"),birth:v("bd"),sx:v("sx"),ms:v("ms"),kids:nm("ch"),phone:v("ph"),bp:v("bp"),hp:v("hp"),iv:v("iv"),sp:v("sp"),field:v("fd"),univ:v("un"),gy:v("gy"),dp:v("dp"),ex:nm("ex"),ml:nm("ml"),pl:v("pl"),pm:nm("pm"),pk:nm("pk"),gm:Math.floor(nm("gm")),gk:nm("gk"),c1:v("c1"),c2:v("c2"),c3:v("c3"),c4:v("c4"),w1:v("w1"),w2:v("w2"),w3:v("w3"),w4:v("w4"),w5:v("w5"),ts:Date.now()};
+ document.querySelectorAll(".f").forEach(w=>{w.classList.remove("bad");w.querySelector(".err").textContent=""});
+ RIDS.forEach(id=>{if(isReq(id)&&v(id)==="")markBad(id,"تکمیل این مورد الزامی است")});
+ if(v("nid")&&!/^\d{10}$/.test(v("nid")))markBad("nid","کد ملی باید ۱۰ رقم باشد");
+ const bm=v("bd").match(/^(\d{4})\/(\d{1,2})\/(\d{1,2})$/);
+ if(v("bd")&&!(bm&&+bm[1]>=1300&&+bm[1]<=1420&&+bm[2]>=1&&+bm[2]<=12&&+bm[3]>=1&&+bm[3]<=31))markBad("bd","تاریخ را به صورت ۱۳۶۸/۰۵/۱۲ وارد کنید");
+ if(v("ph")&&!/^09\d{9}$/.test(v("ph")))markBad("ph","شماره موبایل باید با ۰۹ شروع شود و ۱۱ رقم باشد");
+ if(v("gy")&&!/^\d{4}$/.test(v("gy")))markBad("gy","سال را ۴ رقمی وارد کنید");
+ ["ch","ex","ml","pm","gm"].forEach(id=>{if(nm(id)<0)markBad(id,"مقدار نباید منفی باشد")});
+ if(VIS.pm()&&!(nm("pm")>0))markBad("pm","تعداد ماه خدمت طرح را وارد کنید");
+ const c=[v("c1"),v("c2"),v("c3"),v("c4")].filter(Boolean);if(new Set(c).size!==c.length)markBad("c1","استان‌های انتخابی تکراری است");
+ const wl=[v("w1"),v("w2"),v("w3"),v("w4"),v("w5")].filter(Boolean);
+ if(new Set(wl).size!==wl.length)markBad("w1","شهرستان‌های انتخابی تکراری است");
+ if(wl.includes(JT)&&v("fd")!=="زنان و زایمان")markBad("w1","گزینه‌ی مشترک فقط برای رشته‌ی زنان و زایمان قابل انتخاب است");
+ if(document.querySelector(".f.bad"))return null;
+ const r={first:v("fn"),last:v("ln"),father:v("fa"),nid:v("nid"),birth:v("bd"),sx:v("sx"),ms:v("ms"),kids:VIS.ch()?Math.floor(nm("ch")):0,phone:v("ph"),bp:v("bp"),hp:v("hp"),iv:v("iv"),sp:v("sp"),field:v("fd"),univ:v("un"),gy:v("gy"),dp:v("dp"),ex:VIS.ex()?nm("ex"):0,ml:nm("ml"),pl:v("pl"),pm:VIS.pm()?nm("pm"):0,pk:VIS.pk()?nm("pk"):0,gm:Math.floor(nm("gm")),gk:VIS.gk()?nm("gk"):0,c1:v("c1"),c2:v("c2"),c3:v("c3"),c4:v("c4"),w1:v("w1"),w2:v("w2"),w3:v("w3"),w4:v("w4"),w5:v("w5"),ts:Date.now()};
  return Object.assign(r,calc(r));
 }
+function showResult(r,unv){
+ $("fbox").hidden=true;const d=$("done");d.hidden=false;d.textContent="";
+ let when="";try{when=new Date().toLocaleString("fa-IR",{dateStyle:"medium",timeStyle:"short"})}catch(e){}
+ const top=el("div","rtop"),ic=el("span","okic");ic.innerHTML=CHECK;
+ const tx=el("div");tx.append(el("h2",0,"ثبت‌نام شما انجام شد"),el("p",0,"زمان ثبت: "+when));top.append(ic,tx);
+ const grid=el("div","rgrid"),sc=el("div","score");
+ sc.append(el("div","k","امتیاز اولیه"),el("div","big",fmt(r.score)),gchip(r.grp,r.sp==="بله"));
+ const bd=el("div","bd");
+ const kv=(k,x,z,w)=>{const e=el("div","kv"+(z?" zero":"")+(w?" wide":""));e.append(el("span",0,k),el("b",0,x));return e};
+ DL.forEach((l,i)=>bd.append(kv(l,fmt(r.det[i]),!r.det[i])));
+ bd.append(kv("نام و نام خانوادگی",r.first+" "+r.last),kv("کد ملی",r.nid),kv("رشته",r.field),
+  kv("استان‌ها",[r.c1,r.c2,r.c3,r.c4].filter(Boolean).join("، "),0,1),
+  kv("شهرستان‌ها",[r.w1,r.w2,r.w3,r.w4,r.w5].filter(Boolean).join("، "),0,1));
+ grid.append(sc,bd);
+ const note=el("div","banner");note.style.margin="16px 20px 20px";
+ note.textContent="امتیاز نهایی پس از بررسی مدارک توسط معاونت درمان تأیید می‌شود."+(unv?" ارسال انجام شد، ولی تأیید دریافت از سرور ممکن نبود.":"");
+ d.append(top,grid,note);d.scrollIntoView({behavior:sm(),block:"start"});
+}
+$("sub").onclick=async()=>{
+ showBanner("");
+ const r=read();
+ if(!r){const f=document.querySelector(".f.bad");if(f){f.scrollIntoView({behavior:sm(),block:"center"});const i=f.querySelector("input,select");if(i)i.focus({preventScroll:true})}return}
+ setBusy(true);
+ let res;try{res=await persist(r)}catch(e){res={fail:true,msg:e&&e.code==="invalid_argument"?"دسترسی ثبت اطلاعات برای حساب شما فعال نیست. از ادمین بخواهید شما را با سطح Contributor دعوت کند.":""}}
+ setBusy(false);
+ if(res.ok)return showResult(r,res.unverified);
+ if(res.dup==="nid"){markBad("nid","این کد ملی قبلاً ثبت‌نام شده است.");showBanner("هر کد ملی فقط یک‌بار می‌تواند ثبت‌نام کند. اگر قبلاً ثبت‌نام کرده‌اید، نیازی به ثبت‌نام دوباره نیست.");$("f_nid").scrollIntoView({behavior:sm(),block:"center"})}
+ else if(res.dup==="own")showBanner("با این حساب قبلاً ثبت‌نام انجام شده است و ثبت‌نام دوباره ممکن نیست.");
+ else showBanner(res.msg||"ثبت‌نام انجام نشد. اتصال اینترنت را بررسی کنید و دوباره تلاش کنید.");
+};
+sync();
+
 const SCRIPT_URL="https://script.google.com/macros/s/AKfycbzS08UfYPcoVxJPy6gTygS1jsJW6m5Bu1EOfv-aEFzPTh48Ei-nOzoLO4futqZv5QPC2A/exec";
-$("sub").onclick=async()=>{const r=read();if(!r)return;
- if(SCRIPT_URL.startsWith("PASTE")){alert("آدرس وب‌اپ Google Apps Script هنوز در فایل تنظیم نشده است.");return}
- $("sub").disabled=true;
- try{await fetch(SCRIPT_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(r)});
- $("fbox").classList.add("hid");$("done").classList.remove("hid");
- $("done").innerHTML='<h2>اطلاعات شما ارسال شد</h2><p>گروه: '+GL[r.grp]+'</p><p>امتیاز اولیه:</p><div class="sc">'+r.score+'</div><p style="color:var(--mu)">امتیاز نهایی پس از بررسی مدارک توسط معاونت درمان تأیید می‌شود. اصل مدارک را به معاونت درمان دانشگاه تحویل دهید.</p>';
- }catch(e){alert("ارسال انجام نشد؛ اتصال اینترنت را بررسی کنید.");$("sub").disabled=false}};
+async function persist(r){
+ const KEY="nid-"+r.nid;
+ try{if(localStorage.getItem(KEY))return{dup:"nid"}}catch(e){}
+ let j=null;
+ try{
+  const res=await fetch(SCRIPT_URL,{method:"POST",body:JSON.stringify(r)});
+  j=await res.json();
+ }catch(e){
+  try{await fetch(SCRIPT_URL,{method:"POST",mode:"no-cors",body:JSON.stringify(r)});return{ok:true,unverified:true}}
+  catch(e2){return{fail:true}}
+ }
+ if(j&&j.ok){try{localStorage.setItem(KEY,"1")}catch(e){}return{ok:true}}
+ if(j&&j.error==="duplicate")return{dup:"nid"};
+ return{fail:true};
+}
 </script>
 </body>
 </html>
