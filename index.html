@@ -3,6 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src https://script.google.com https://script.googleusercontent.com; img-src data:; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex,nofollow">
 <title>ثبت‌نام نیروهای متخصص</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -261,6 +264,7 @@ $("bd").addEventListener("input",e=>{
  const bc=c.length>0||P.length>2||(!del&&ab&&b.length===2);
  const s=a+(ab?"/"+b:"")+(bc?"/"+c:"");
  if(t.value!==s)t.value=s});
+function validNid(n){if(!/^\d{10}$/.test(n)||/^(\d)\1{9}$/.test(n))return false;let s=0;for(let i=0;i<9;i++)s+=(+n[i])*(10-i);const r=s%11,k=+n[9];return r<2?k===r:k===11-r}
 const v=id=>fa2en($(id).value).trim(),nm=id=>parseFloat(v(id))||0;
 const VIS={
  ch:()=>v("ms")==="متأهل",
@@ -285,6 +289,7 @@ function read(){
  document.querySelectorAll(".f").forEach(w=>{w.classList.remove("bad");w.querySelector(".err").textContent=""});
  RIDS.forEach(id=>{if(isReq(id)&&v(id)==="")markBad(id,"تکمیل این مورد الزامی است")});
  if(v("nid")&&!/^\d{10}$/.test(v("nid")))markBad("nid","کد ملی باید ۱۰ رقم باشد");
+ else if(v("nid")&&!validNid(v("nid")))markBad("nid","کد ملی معتبر نیست؛ ارقام را دوباره کنترل کنید");
  const bm=v("bd").match(/^(\d{4})\/(\d{1,2})\/(\d{1,2})$/);
  if(v("bd")&&!(bm&&+bm[1]>=1300&&+bm[1]<=1420&&+bm[2]>=1&&+bm[2]<=12&&+bm[3]>=1&&+bm[3]<=31))markBad("bd","تاریخ را به صورت ۱۳۶۸/۰۵/۱۲ وارد کنید");
  if(v("ph")&&!/^09\d{9}$/.test(v("ph")))markBad("ph","شماره موبایل باید با ۰۹ شروع شود و ۱۱ رقم باشد");
@@ -331,7 +336,7 @@ $("sub").onclick=async()=>{
 };
 sync();
 
-const SCRIPT_URL="https://script.google.com/macros/s/AKfycbx2CBTfdJGt7KJC5j-WFuysHe1SYTCTQeFmCVOT3uk07Dz0Y1Hx9XOCSuMOH9AOsBgaXg/exec";
+const SCRIPT_URL="https://script.google.com/macros/s/AKfycbzS08UfYPcoVxJPy6gTygS1jsJW6m5Bu1EOfv-aEFzPTh48Ei-nOzoLO4futqZv5QPC2A/exec";
 async function persist(r){
  const KEY="nid-"+r.nid;
  try{if(localStorage.getItem(KEY))return{dup:"nid"}}catch(e){}
